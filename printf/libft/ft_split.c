@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:42:33 by lmaume            #+#    #+#             */
-/*   Updated: 2023/12/15 17:42:26 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/05 15:43:40 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-static
-void	smite(char **tab)
+void	free_tab(char **tab)
 {
 	char	**tab_start;
 
@@ -71,7 +70,7 @@ char	**fill_tab(char const *s, char c, char **tab, char **tab_start)
 		*tab = ft_substr(s, i, (j - i));
 		if (!*tab)
 		{
-			smite(tab_start);
+			free_tab(tab_start);
 			return (NULL);
 		}
 		tab++;
@@ -90,7 +89,7 @@ char	**ft_split(char const *s, char c)
 	tab = ft_calloc(wordcount(s, c) + 1, sizeof(char *));
 	if (!tab)
 	{
-		smite(tab);
+		free_tab(tab);
 		return (NULL);
 	}
 	if (fill_tab(s, c, tab, tab) == NULL)

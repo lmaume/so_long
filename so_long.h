@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:22:45 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/04 18:24:53 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/05 18:18:38 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 # include "printf/libft/libft.h"
 # include "printf/libftprintf.h"
 # include "parsing/parsing.h"
+# include "struct.h"
 
-# include "mlx.h"
+# include "MLX42/include/MLX42/MLX42.h"
 # include <sys/types.h> //V
 # include <sys/stat.h> // V
 # include <fcntl.h> //open, close
@@ -26,13 +27,6 @@
 # include <stdio.h> //perror, printf de test
 # include <stdlib.h>  //malloc, free
 # include <unistd.h> //write, read, exit
-
-
-typedef struct	s_info_map
-{
-	char	*filename;
-	char	**map;
-}		t_map;
 
 // enum e_errors
 // {

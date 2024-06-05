@@ -6,7 +6,7 @@
 #    By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 15:13:38 by lmaume            #+#    #+#              #
-#    Updated: 2024/06/04 19:08:23 by lmaume           ###   ########.fr        #
+#    Updated: 2024/06/05 16:46:43 by lmaume           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,7 @@ SRCS =	ft_isalpha.c \
 		ft_putnbr_fd.c \
 		ft_print_tab.c \
 		ft_file_to_tab.c \
+		ft_check_line.c \
 		ft_count_selected_char_in_tab.c
 
 CC = cc

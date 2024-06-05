@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:06:57 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/04 18:43:43 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/05 16:47:00 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,17 @@
 #ifndef PARSING_H
 # define PARSING_H
 
+# include "../struct.h"
 # include "../printf/libft/libft.h"
 # include "../printf/libftprintf.h"
 # include "../get_next_line/get_next_line.h"
 # include <stdbool.h>
 
 //? MAP VERIFICATIONS
-bool	is_rectangle(char **map);
-bool	is_exit_valid(char **map);
+bool 	is_all_ok(int x, int y, char **map);
+bool	is_walls_valid(char **map);
+void	player_pos(t_map *infomap);
+int     pathfinding(int x, int y, char **map);
 
 //? MAP INITIALISATION
 int		count_file_size(char *filename);
