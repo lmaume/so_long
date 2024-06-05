@@ -6,7 +6,7 @@
 #    By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 17:31:33 by lmaume            #+#    #+#              #
-#    Updated: 2024/06/05 18:19:25 by lmaume           ###   ########.fr        #
+#    Updated: 2024/06/05 18:48:48 by lmaume           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ HEADERS	:= -I ./include -I $(LIBMLX)/include
 LIBS	:= -Iinclude -ldl -lglfw -pthread -lm
 
 SRCS =	so_long.c \
+		gameplay/moves.c \
+		gameplay/window.c \
 		parsing/init_map.c \
 		parsing/parsing_map.c \
 		parsing/pathfinding.c \
@@ -40,7 +42,7 @@ all : $(NAME)
 $(NAME) : $(OBJS)
 	@$(MAKE) all -C ./printf
 	@cp $(PRINTF) $(NAME)
-	@cc $(CFLAGS) $(OBJS) $(PRINTF) -o $(NAME)
+	@cc $(CFLAGS) $(LIBS)  $(OBJS) $(PRINTF) $(MLX_A) -o $(NAME)
 
 clean :
 	@$(MAKE) clean -C ./printf

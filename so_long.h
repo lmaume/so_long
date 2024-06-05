@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/12 18:22:45 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/05 18:18:38 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/05 18:41:26 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "printf/libft/libft.h"
 # include "printf/libftprintf.h"
+# include "gameplay/gameplay.h"
 # include "parsing/parsing.h"
 # include "struct.h"
 
