@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:15:21 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/04 18:19:49 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/07 15:52:15 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ char	**ft_file_to_tab(char *filename)
 	if (tab == NULL)
 		return (NULL);
 	fd = open(filename, O_RDONLY);
+	if (fd == -1)
+	{
+		free(tab);
+		return (-1);
+	}
 	tab[i] = get_next_line(fd);
 	while (tab[i] != NULL)
 	{

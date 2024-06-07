@@ -6,7 +6,7 @@
 #    By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 17:31:33 by lmaume            #+#    #+#              #
-#    Updated: 2024/06/05 18:48:48 by lmaume           ###   ########.fr        #
+#    Updated: 2024/06/07 16:27:39 by lmaume           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,9 +14,9 @@ NAME = so_long
 
 MLX_A = MLX42/libmlx42.a
 
-HEADERS	:= -I ./include -I $(LIBMLX)/include
+HEADERS	= -I ./include -I $(LIBMLX)/include
 
-LIBS	:= -Iinclude -ldl -lglfw -pthread -lm
+LIBS	= -Iinclude -ldl -lglfw -pthread -lm
 
 SRCS =	so_long.c \
 		gameplay/moves.c \

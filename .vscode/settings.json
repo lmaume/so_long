@@ -7,6 +7,8 @@
 		"mlx42.h": "c",
 		"struct.h": "c",
 		"stat.h": "c",
-		"gameplay.h": "c"
+		"gameplay.h": "c",
+		"libft.h": "c",
+		"stdbool.h": "c"
 	}
 }
