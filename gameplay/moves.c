@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:49:04 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/10 12:53:20 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/10 18:39:02 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	move_up(t_map *infomap)
 	infomap->map[infomap->p_y][infomap->p_x] = '0';
 	infomap->map[infomap->p_y - 1][infomap->p_x] = 'P';
 	infomap->p_y -= 1;
-	ft_print_tab(infomap->map);
+	infomap->moves += 1;
+	ft_printf("You moved [%d] time(s)\n", infomap->moves);
 }
 
 void	move_down(t_map *infomap)
@@ -44,7 +45,8 @@ void	move_down(t_map *infomap)
 	infomap->map[infomap->p_y][infomap->p_x] = '0';
 	infomap->map[infomap->p_y + 1][infomap->p_x] = 'P';
 	infomap->p_y +=1;
-	ft_print_tab(infomap->map);
+	infomap->moves += 1;
+	ft_printf("You moved [%d] time(s)\n", infomap->moves);
 }
 
 void	move_left(t_map *infomap)
@@ -53,7 +55,8 @@ void	move_left(t_map *infomap)
 	infomap->map[infomap->p_y][infomap->p_x] = '0';
 	infomap->map[infomap->p_y][infomap->p_x - 1] = 'P';
 	infomap->p_x -= 1;
-	ft_print_tab(infomap->map);
+	infomap->moves += 1;
+	ft_printf("You moved [%d] time(s)\n", infomap->moves);
 }
 
 void	move_right(t_map *infomap)
@@ -62,5 +65,6 @@ void	move_right(t_map *infomap)
 	infomap->map[infomap->p_y][infomap->p_x] = '0';
 	infomap->map[infomap->p_y][infomap->p_x + 1] = 'P';
 	infomap->p_x += 1;
-	ft_print_tab(infomap->map);
+	infomap->moves += 1;
+	ft_printf("You moved [%d] time(s)\n", infomap->moves);
 }

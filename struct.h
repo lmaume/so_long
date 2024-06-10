@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:51:56 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/10 16:09:03 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/10 18:45:40 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ typedef struct	s_info_map
 	t_tile		*lst_tiles;
 	char		**map;
 	char		*filename;
+	int			moves;
 	int			p_x;
 	int			p_y;
 	int			m_x;

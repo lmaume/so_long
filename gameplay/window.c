@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:40:20 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/10 17:15:46 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/10 18:37:07 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,14 @@ int	display_map(t_map *infomap)
 	index = infomap->lst_tiles;
 	while (i < infomap->m_y && index->next != NULL)
 	{
-		
-		while (j < infomap->m_x && index->next != NULL)
+		if (mlx_image_to_window(infomap->mlx, index->tile, (j * 64), (i * 64)) == -1)
+			return (EXIT_FAILURE);
+		while (j < infomap->m_x - 1 && index->next != NULL)
 		{
-			if (mlx_image_to_window(infomap->mlx, index->tile, (j * 64), (i * 64)) == -1)
-			{
-				mlx_close_window(infomap->mlx);
-				return (EXIT_FAILURE);
-			}
 			index = index->next;
 			j++;
+			if (mlx_image_to_window(infomap->mlx, index->tile, (j * 64), (i * 64)) == -1)
+				return (EXIT_FAILURE);
 		}
 		index = index->next;
 		j = 0;
@@ -92,37 +90,25 @@ int	file_to_image(t_map *infomap)
 
 int	open_window(t_map infomap)
 {
-	
-	
 	get_map_size(&infomap);
-	// Gotta error check this stuff
-	if (!(infomap.mlx = mlx_init((infomap.m_x - 1) * 64, infomap.m_y * 64, "MLX42", true)))
+	if (!(infomap.mlx = mlx_init((infomap.m_x - 1) * 64, infomap.m_y * 64, "MLX42", false)))
 		return(EXIT_FAILURE);
 	 if (file_to_image(&infomap) == EXIT_FAILURE)
 	 	return (EXIT_FAILURE);
-
 	texture_to_list(&infomap);
 	if (display_map(&infomap) == -1)
-		return (EXIT_FAILURE);
-
-	
-	if (!(infomap.image = mlx_new_image(infomap.mlx, 128, 128)))
 	{
 		mlx_close_window(infomap.mlx);
 		return (EXIT_FAILURE);
 	}
 
-	// Display the image
 	if (mlx_image_to_window(infomap.mlx, infomap.sprites.player, infomap.p_x * 64, infomap.p_y * 64) == -1)
 	{
 		mlx_close_window(infomap.mlx);
 		return (EXIT_FAILURE);
 	}
-
-
-	// mlx_loop_hook(infomap.mlx, &ft_randomize, (void *)&infomap);
+	infomap.moves = 0;
 	mlx_loop_hook(infomap.mlx, &ft_hook, (void *)&infomap);
-
 	mlx_loop(infomap.mlx);
 
 	mlx_delete_image(infomap.mlx, infomap.sprites.player);
