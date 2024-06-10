@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:26:00 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/04 18:26:21 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/10 16:48:14 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,39 @@ char	**map_init(char *filename)
 void print_map(char **map)
 {
 	ft_print_tab(map);
+}
+
+void	get_map_size(t_map *infomap)
+{
+	int	i;
+
+	i = 0;
+	if (infomap->map[0] != NULL)
+		infomap->m_x = ft_strlen(infomap->map[0]);
+	while (infomap->map[i] != NULL)
+		i++;
+	infomap->m_y = i;
+}
+
+
+t_tile	*ft_tilenew(void *content)
+{
+	t_tile	*bloc;
+	
+	bloc = ft_calloc(sizeof(t_tile), 1);
+	bloc->tile = content;
+	return (bloc);
+}
+
+void	ft_tileadd_back(t_tile **lst, t_tile *new)
+{
+	t_tile	*bloc;
+	
+	bloc = *lst;
+	while(bloc->next != NULL)
+	{
+		bloc = bloc->next;
+	}
+	bloc->next = new;
+	new->next = NULL;
 }

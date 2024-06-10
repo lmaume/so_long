@@ -6,25 +6,61 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:49:04 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/07 16:43:55 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/10 12:53:20 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "gameplay.h"
 
-void ft_hook(void* param)
+void ft_hook(void *param)
 {
 	t_map	*infomap;
 
 	infomap = (t_map *)param;
 	if (mlx_is_key_down(infomap->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(infomap->mlx);
-	if (mlx_is_key_down(infomap->mlx, MLX_KEY_UP))
-		infomap->sprites.player->instances[0].y -= 5;
-	if (mlx_is_key_down(infomap->mlx, MLX_KEY_DOWN))
-		infomap->sprites.player->instances[0].y += 5;
-	if (mlx_is_key_down(infomap->mlx, MLX_KEY_LEFT))
-		infomap->sprites.player->instances[0].x -= 5;
-	if (mlx_is_key_down(infomap->mlx, MLX_KEY_RIGHT))
-		infomap->sprites.player->instances[0].x += 5;
+	if (mlx_is_key_down(infomap->mlx, MLX_KEY_UP) && infomap->map[infomap->p_y - 1][infomap->p_x] != '1')
+		move_up(infomap);
+	if (mlx_is_key_down(infomap->mlx, MLX_KEY_DOWN) && infomap->map[infomap->p_y + 1][infomap->p_x] != '1')
+		move_down(infomap);
+	if (mlx_is_key_down(infomap->mlx, MLX_KEY_LEFT) && infomap->map[infomap->p_y][infomap->p_x - 1] != '1')
+		move_left(infomap);
+	if (mlx_is_key_down(infomap->mlx, MLX_KEY_RIGHT) && infomap->map[infomap->p_y][infomap->p_x + 1] != '1')
+		move_right(infomap);
+}
+
+void	move_up(t_map *infomap)
+{
+	infomap->sprites.player->instances[0].y -= 64;
+	infomap->map[infomap->p_y][infomap->p_x] = '0';
+	infomap->map[infomap->p_y - 1][infomap->p_x] = 'P';
+	infomap->p_y -= 1;
+	ft_print_tab(infomap->map);
+}
+
+void	move_down(t_map *infomap)
+{
+	infomap->sprites.player->instances[0].y += 64;
+	infomap->map[infomap->p_y][infomap->p_x] = '0';
+	infomap->map[infomap->p_y + 1][infomap->p_x] = 'P';
+	infomap->p_y +=1;
+	ft_print_tab(infomap->map);
+}
+
+void	move_left(t_map *infomap)
+{
+	infomap->sprites.player->instances[0].x -= 64;
+	infomap->map[infomap->p_y][infomap->p_x] = '0';
+	infomap->map[infomap->p_y][infomap->p_x - 1] = 'P';
+	infomap->p_x -= 1;
+	ft_print_tab(infomap->map);
+}
+
+void	move_right(t_map *infomap)
+{
+	infomap->sprites.player->instances[0].x += 64;
+	infomap->map[infomap->p_y][infomap->p_x] = '0';
+	infomap->map[infomap->p_y][infomap->p_x + 1] = 'P';
+	infomap->p_x += 1;
+	ft_print_tab(infomap->map);
 }

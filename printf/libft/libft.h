@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 17:25:30 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/05 16:40:23 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/10 16:12:03 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,20 @@ void	ft_print_tab(char **tab);
 char	**ft_file_to_tab(char *filename);
 int		ft_count_selected_char_in_tab(char **tab, char c);
 void	free_tab(char **tab);
+
+typedef struct s_list
+{
+	void			*content;
+	struct	s_list *next;
+}			t_list;
+
+//? LISTS
+t_list	*ft_lstnew(void *content);
+t_list	*ft_lstlast(t_list *lst);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+int		ft_lstsize(t_list *lst);
+void	ft_lstdelone(t_list **lst, t_list *to_del);
+
 
 #endif
