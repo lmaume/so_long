@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 15:31:56 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/10 15:16:27 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/11 15:31:48 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void ft_lstadd_back(t_list **lst, t_list *new)
 	t_list	*bloc;
 	
 	bloc = *lst;
-	while(bloc->next != NULL)
+	while (bloc->next != NULL)
 	{
 		bloc = bloc->next;
 	}
@@ -55,7 +55,7 @@ int ft_lstsize(t_list *lst)
 
 t_list *ft_lstlast(t_list *lst)
 {
-	while(lst->next != NULL)
+	while (lst->next != NULL)
 	{
 		lst = lst->next;
 	}
@@ -66,7 +66,7 @@ void ft_lstdelone(t_list **lst, t_list *to_del)
 {
 	t_list *bloc = *lst;
 	
-	while(bloc->next != to_del)
+	while (bloc->next != to_del)
 		bloc = bloc->next;
 	free(to_del);
 }

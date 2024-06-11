@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:49:04 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/10 18:39:02 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/11 19:11:07 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void ft_hook(void *param)
 {
 	t_map	*infomap;
 
+	usleep(7000);
 	infomap = (t_map *)param;
+	if (is_player_on_coin(infomap) == true)
+		ft_del_one_coin(infomap, &infomap->lst_coins, coin_to_del(infomap));
 	if (mlx_is_key_down(infomap->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(infomap->mlx);
 	if (mlx_is_key_down(infomap->mlx, MLX_KEY_UP) && infomap->map[infomap->p_y - 1][infomap->p_x] != '1')
@@ -36,6 +39,8 @@ void	move_up(t_map *infomap)
 	infomap->map[infomap->p_y - 1][infomap->p_x] = 'P';
 	infomap->p_y -= 1;
 	infomap->moves += 1;
+	if (is_win(infomap, infomap->p_x, infomap->p_y) == true)
+		return ;
 	ft_printf("You moved [%d] time(s)\n", infomap->moves);
 }
 
@@ -46,6 +51,8 @@ void	move_down(t_map *infomap)
 	infomap->map[infomap->p_y + 1][infomap->p_x] = 'P';
 	infomap->p_y +=1;
 	infomap->moves += 1;
+	if (is_win(infomap, infomap->p_x, infomap->p_y) == true)
+		return ;
 	ft_printf("You moved [%d] time(s)\n", infomap->moves);
 }
 
@@ -56,6 +63,8 @@ void	move_left(t_map *infomap)
 	infomap->map[infomap->p_y][infomap->p_x - 1] = 'P';
 	infomap->p_x -= 1;
 	infomap->moves += 1;
+	if (is_win(infomap, infomap->p_x, infomap->p_y) == true)
+		return ;
 	ft_printf("You moved [%d] time(s)\n", infomap->moves);
 }
 
@@ -66,5 +75,7 @@ void	move_right(t_map *infomap)
 	infomap->map[infomap->p_y][infomap->p_x + 1] = 'P';
 	infomap->p_x += 1;
 	infomap->moves += 1;
+	if (is_win(infomap, infomap->p_x, infomap->p_y) == true)
+		return ;
 	ft_printf("You moved [%d] time(s)\n", infomap->moves);
 }

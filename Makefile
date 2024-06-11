@@ -6,7 +6,7 @@
 #    By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/12 17:31:33 by lmaume            #+#    #+#              #
-#    Updated: 2024/06/07 16:27:39 by lmaume           ###   ########.fr        #
+#    Updated: 2024/06/11 14:27:41 by lmaume           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ HEADERS	= -I ./include -I $(LIBMLX)/include
 LIBS	= -Iinclude -ldl -lglfw -pthread -lm
 
 SRCS =	so_long.c \
+		gameplay/exit.c \
+		gameplay/coins.c \
 		gameplay/moves.c \
 		gameplay/window.c \
 		parsing/init_map.c \

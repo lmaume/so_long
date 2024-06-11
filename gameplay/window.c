@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:40:20 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/10 18:37:07 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/11 19:36:10 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ int	display_map(t_map *infomap)
 	i = 0;
 	j = 0;
 	index = infomap->lst_tiles;
-	while (i < infomap->m_y && index->next != NULL)
+	while (i < infomap->map_y && index->next != NULL)
 	{
 		if (mlx_image_to_window(infomap->mlx, index->tile, (j * 64), (i * 64)) == -1)
 			return (EXIT_FAILURE);
-		while (j < infomap->m_x - 1 && index->next != NULL)
+		while (j < infomap->map_x - 1 && index->next != NULL)
 		{
 			index = index->next;
 			j++;
@@ -88,35 +88,40 @@ int	file_to_image(t_map *infomap)
 	return (EXIT_SUCCESS);
 }
 
+void	delete_all_textures(t_map *infomap)
+{
+	mlx_delete_texture(infomap->sprites.p_texture);
+	mlx_delete_texture(infomap->sprites.exit_texture);
+	mlx_delete_texture(infomap->sprites.coin_texture);
+	mlx_delete_texture(infomap->sprites.wall_texture);
+	mlx_delete_texture(infomap->sprites.floor_texture);
+}
+
 int	open_window(t_map infomap)
 {
 	get_map_size(&infomap);
-	if (!(infomap.mlx = mlx_init((infomap.m_x - 1) * 64, infomap.m_y * 64, "MLX42", false)))
+	if (!(infomap.mlx = mlx_init((infomap.map_x - 1) * 64, infomap.map_y * 64, "so_long", false)))
 		return(EXIT_FAILURE);
 	 if (file_to_image(&infomap) == EXIT_FAILURE)
 	 	return (EXIT_FAILURE);
 	texture_to_list(&infomap);
+
 	if (display_map(&infomap) == -1)
 	{
 		mlx_close_window(infomap.mlx);
 		return (EXIT_FAILURE);
 	}
-
-	if (mlx_image_to_window(infomap.mlx, infomap.sprites.player, infomap.p_x * 64, infomap.p_y * 64) == -1)
+	texture_to_coin(&infomap);
+	if (display_coins(&infomap) == -1)
 	{
 		mlx_close_window(infomap.mlx);
 		return (EXIT_FAILURE);
 	}
+	put_sprite(&infomap);
 	infomap.moves = 0;
 	mlx_loop_hook(infomap.mlx, &ft_hook, (void *)&infomap);
 	mlx_loop(infomap.mlx);
-
-	mlx_delete_image(infomap.mlx, infomap.sprites.player);
-	mlx_delete_texture(infomap.sprites.p_texture);
-	mlx_delete_texture(infomap.sprites.exit_texture);
-	mlx_delete_texture(infomap.sprites.coin_texture);
-	mlx_delete_texture(infomap.sprites.wall_texture);
-	mlx_delete_texture(infomap.sprites.floor_texture);
+	printf("Pet");
 	mlx_terminate(infomap.mlx);
 	return (EXIT_SUCCESS);
 }

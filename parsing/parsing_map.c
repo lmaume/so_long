@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:16:08 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/05 17:41:12 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/11 18:42:48 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static bool	is_player_valid(char **map)
 	return (true);
 }
 
-static bool	is_collectible_valid(char **map)
+bool	is_collectible_valid(char **map)
 {
 	if (ft_count_selected_char_in_tab(map, 'C') > 0)
 	{
