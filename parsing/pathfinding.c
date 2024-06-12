@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 19:44:03 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/05 17:39:38 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/12 14:02:06 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,21 +52,21 @@ bool	is_walls_valid(char **map)
 	return (true);
 }
 
-int     pathfinding(int x, int y, char **map)
+int	pathfinding(int x, int y, char **map)
 {
-		int	end;
+	int	end;
 
-		end = 0;
-		if (map[x][y] == 'C' || map[x][y] == 'E')
-				++end;
-		map[x][y] = '1';
-		if (map[x + 1][y] != '1')
-				end += pathfinding(x + 1, y, map);
-		if (map[x - 1][y] != '1')
-				end += pathfinding(x - 1, y, map);
-		if (map[x][y + 1] != '1')
-				end += pathfinding(x, y + 1, map);
-		if (map[x][y - 1] != '1')
-				end += pathfinding(x, y - 1, map);
-		return (end);
+	end = 0;
+	if (map[x][y] == 'C' || map[x][y] == 'E')
+		++end;
+	map[x][y] = '1';
+	if (map[x + 1][y] != '1')
+		end += pathfinding(x + 1, y, map);
+	if (map[x - 1][y] != '1')
+		end += pathfinding(x - 1, y, map);
+	if (map[x][y + 1] != '1')
+		end += pathfinding(x, y + 1, map);
+	if (map[x][y - 1] != '1')
+		end += pathfinding(x, y - 1, map);
+	return (end);
 }

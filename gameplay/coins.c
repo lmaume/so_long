@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:05:19 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/11 18:38:39 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/12 14:31:34 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_coins	*ft_newcoin(void *content, int x, int y)
 {
 	t_coins	*bloc;
-	
+
 	bloc = ft_calloc(sizeof(t_coins), 1);
 	bloc->coin = content;
 	bloc->c_x = x;
@@ -26,7 +26,7 @@ static t_coins	*ft_newcoin(void *content, int x, int y)
 static void	ft_coinadd_back(t_coins **lst, t_coins *new)
 {
 	t_coins	*bloc;
-	
+
 	bloc = *lst;
 	while (bloc->next != NULL)
 		bloc = bloc->next;
@@ -36,8 +36,9 @@ static void	ft_coinadd_back(t_coins **lst, t_coins *new)
 
 void	ft_del_one_coin(t_map *infomap, t_coins **lst, t_coins *to_del)
 {
-	t_coins *bloc = *lst;
-	
+	t_coins	*bloc;
+
+	bloc = *lst;
 	if (bloc == to_del)
 	{
 		(*lst) = (*lst)->next;
@@ -59,7 +60,7 @@ void	ft_del_one_coin(t_map *infomap, t_coins **lst, t_coins *to_del)
 	return (free(to_del));
 }
 
-void	texture_to_coin(t_map *infomap)
+void	texture_to_coin(t_map *infomap, mlx_texture_t *coin)
 {
 	int		i;
 	int		j;
@@ -74,11 +75,13 @@ void	texture_to_coin(t_map *infomap)
 		{
 			if (infomap->map[i][j] == 'C' && count == 0)
 			{
-				infomap->lst_coins = ft_newcoin(mlx_texture_to_image(infomap->mlx, infomap->sprites.coin_texture), j, i);
+				infomap->lst_coins = \
+				ft_newcoin(mlx_texture_to_image(infomap->mlx, coin), j, i);
 				count++;
 			}
 			else if (infomap->map[i][j] == 'C' && count > 0)
-				ft_coinadd_back(&infomap->lst_coins, ft_newcoin(mlx_texture_to_image(infomap->mlx, infomap->sprites.coin_texture), j, i));
+				ft_coinadd_back(&infomap->lst_coins, \
+				ft_newcoin(mlx_texture_to_image(infomap->mlx, coin), j, i));
 			j++;
 		}
 		j = 0;
@@ -102,7 +105,8 @@ int	display_coins(t_map *infomap)
 			j++;
 			if (infomap->map[i][j] == 'C')
 			{
-				if (mlx_image_to_window(infomap->mlx, index->coin, (j * 64), (i * 64)) == -1)
+				if (mlx_image_to_window(infomap->mlx, \
+				index->coin, (j * 64), (i * 64)) == -1)
 					return (EXIT_FAILURE);
 				index = index->next;
 			}
@@ -111,19 +115,4 @@ int	display_coins(t_map *infomap)
 		i++;
 	}
 	return (EXIT_SUCCESS);
-}
-
-void	print_list(t_coins *lst)
-{
-	t_coins *index;
-	int		i;
-
-	i = 1;
-	index = lst;
-	while (index != NULL)
-	{
-		ft_printf("case %d : %p\n", i, index);
-		index =index->next;
-		i++;
-	}
 }

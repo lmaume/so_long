@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:16:08 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/11 18:42:48 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/12 16:50:45 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static bool	is_rectangle(char **map)
 		else
 		{
 			if (map[i + 2] == NULL && (len == ft_strlen(map[i + 1]) + 1))
-				break;
+				break ;
 			ft_printf("Map is not rectangle.\n");
 			return (false);
 		}
@@ -66,7 +66,7 @@ bool	is_collectible_valid(char **map)
 	return (false);
 }
 
-bool is_all_ok(int x, int y, char **map)
+bool	is_all_ok(int x, int y, char **map, t_map *infomap)
 {
 	if (is_rectangle(map) == false)
 		return (false);
@@ -75,6 +75,8 @@ bool is_all_ok(int x, int y, char **map)
 	if (is_player_valid(map) == false)
 		return (false);
 	if (is_collectible_valid(map) == false)
+		return (false);
+	if (is_too_big(infomap) == false)
 		return (false);
 	if (is_walls_valid(map) == false)
 	{

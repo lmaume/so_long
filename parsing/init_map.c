@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:26:00 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/11 14:09:10 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/12 16:43:46 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,6 @@
 char	**map_init(char *filename)
 {
 	return (ft_file_to_tab(filename));
-}
-
-void print_map(char **map)
-{
-	ft_print_tab(map);
 }
 
 void	get_map_size(t_map *infomap)
@@ -37,7 +32,7 @@ void	get_map_size(t_map *infomap)
 t_tile	*ft_tilenew(void *content)
 {
 	t_tile	*bloc;
-	
+
 	bloc = ft_calloc(sizeof(t_tile), 1);
 	bloc->tile = content;
 	return (bloc);
@@ -46,7 +41,7 @@ t_tile	*ft_tilenew(void *content)
 void	ft_tileadd_back(t_tile **lst, t_tile *new)
 {
 	t_tile	*bloc;
-	
+
 	bloc = *lst;
 	while (bloc->next != NULL)
 	{
@@ -54,4 +49,14 @@ void	ft_tileadd_back(t_tile **lst, t_tile *new)
 	}
 	bloc->next = new;
 	new->next = NULL;
+}
+
+bool	is_too_big(t_map *infomap)
+{
+	if (infomap->map_x > 60 || infomap->map_y > 30)
+	{
+		ft_printf("Map is to big.\n");
+		return (false);
+	}
+	return (true);
 }
