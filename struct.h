@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:51:56 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/13 15:47:38 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 16:55:20 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCT_H
 
 # include "MLX42/include/MLX42/MLX42.h"
+# include "sprite.h"
 # include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -31,17 +32,6 @@ typedef struct s_lst_tiles
 	mlx_image_t			*tile;
 	struct s_lst_tiles	*next;
 }						t_tile;
-
-typedef struct s_sprites
-{
-	mlx_texture_t		*p_texture;
-	mlx_texture_t		*wall_texture;
-	mlx_texture_t		*floor_texture;
-	mlx_texture_t		*coin_texture;
-	mlx_texture_t		*exit_texture;
-	mlx_image_t			*player;
-	mlx_image_t			*exit;
-}			t_sprites,	t_player;
 typedef struct s_info_map
 {
 	mlx_t				*mlx;

@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:19:17 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/13 13:40:07 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:08:05 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	put_sprite(t_map *infomap)
 	i = 0;
 	j = 0;
 	while (infomap->map[i] != NULL)
-	{	
+	{
 		while (infomap->map[i][j] != '\0')
 		{
 			if (infomap->map[i][j] == 'E')

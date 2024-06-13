@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:41:37 by lmaume            #+#    #+#             */
-/*   Updated: 2024/02/16 17:37:06 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:07:05 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static
 int	getlen(long long int number)
-{	
+{
 	int	len;
 
 	len = 0;

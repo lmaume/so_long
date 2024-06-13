@@ -6,7 +6,7 @@
 #    By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 15:13:38 by lmaume            #+#    #+#              #
-#    Updated: 2024/06/13 15:33:36 by lmaume           ###   ########.fr        #
+#    Updated: 2024/06/13 16:53:56 by lmaume           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,7 @@ SRCS =	ft_isalpha.c \
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=leak -g3
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 

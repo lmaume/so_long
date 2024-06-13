@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:40:20 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/13 14:47:40 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:08:15 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	texture_to_list(t_map *infomap, t_texture *wall, t_texture *floor)
 	j = 1;
 	infomap->lst_tiles = ft_tilenew(mlx_texture_to_image(infomap->mlx, wall));
 	while (infomap->map[i] != NULL)
-	{	
+	{
 		while (infomap->map[i][j] != '\0')
 		{
 			if (infomap->map[i][j] == '1')

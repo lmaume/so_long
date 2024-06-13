@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 17:04:18 by lmaume            #+#    #+#             */
-/*   Updated: 2024/02/09 18:53:38 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:07:21 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	getsign(int number)
 
 static
 int	getlen(int number)
-{	
+{
 	int	len;
 
 	len = 0;

@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:05:19 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/12 14:31:34 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 17:08:00 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	texture_to_coin(t_map *infomap, mlx_texture_t *coin)
 	j = 1;
 	count = 0;
 	while (infomap->map[i] != NULL)
-	{	
+	{
 		while (infomap->map[i][j] != '\0')
 		{
 			if (infomap->map[i][j] == 'C' && count == 0)

@@ -6,7 +6,7 @@
 #    By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 16:10:53 by lmaume            #+#    #+#              #
-#    Updated: 2024/06/13 15:06:14 by lmaume           ###   ########.fr        #
+#    Updated: 2024/06/13 16:53:53 by lmaume           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT = ./libft/libft.a
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -fsanitize=leak -g3
+CFLAGS = -Wall -Wextra -Werror
 
 RM = rm -f
 
