@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_tab.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/04 18:09:56 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/13 15:34:36 by lmaume           ###   ########.fr       */
+/*   Created: 2024/06/13 15:32:56 by lmaume            #+#    #+#             */
+/*   Updated: 2024/06/13 15:33:25 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "../libftprintf.h"
 
-void	ft_print_tab(char **tab)
+void	ft_lstdelone(t_list **lst, t_list *to_del)
 {
-	int	i;
+	t_list	*bloc;
 
-	i = 0;
-	if (tab == NULL)
-		return ;
-	while (tab[i] != NULL)
-	{
-		ft_printf("%s", tab[i]);
-		i++;
-	}
-	ft_printf("\n");
+	bloc = *lst;
+	while (bloc->next != to_del)
+		bloc = bloc->next;
+	free(to_del);
 }

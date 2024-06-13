@@ -6,17 +6,17 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:51:56 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/12 15:13:43 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 15:47:38 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
+# include "MLX42/include/MLX42/MLX42.h"
+# include <stdbool.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <stdbool.h>
-# include "MLX42/include/MLX42/MLX42.h"
 
 typedef struct s_lst_coins
 {
@@ -34,31 +34,28 @@ typedef struct s_lst_tiles
 
 typedef struct s_sprites
 {
-	mlx_texture_t	*p_texture;
-	mlx_texture_t	*wall_texture;
-	mlx_texture_t	*floor_texture;
-	mlx_texture_t	*coin_texture;
-	mlx_texture_t	*exit_texture;
-	mlx_image_t		*player;
-	mlx_image_t		*exit;
-}					t_sprites,	t_player;
-
+	mlx_texture_t		*p_texture;
+	mlx_texture_t		*wall_texture;
+	mlx_texture_t		*floor_texture;
+	mlx_texture_t		*coin_texture;
+	mlx_texture_t		*exit_texture;
+	mlx_image_t			*player;
+	mlx_image_t			*exit;
+}			t_sprites,	t_player;
 typedef struct s_info_map
 {
-	mlx_t		*mlx;
-	mlx_image_t	*image;
-	t_sprites	sprites;
-	t_coins		*lst_coins;
-	t_tile		*lst_tiles;
-	char		**map;
-	char		*filename;
-	int			moves;
-	int			p_x;
-	int			p_y;
-	int			map_x;
-	int			map_y;
-	int			exit_x;
-	int			exit_y;
-}				t_map;
+	mlx_t				*mlx;
+	t_sprites			sprites;
+	t_coins				*lst_coins;
+	t_tile				*lst_tiles;
+	char				**map;
+	int					moves;
+	int					p_x;
+	int					p_y;
+	int					map_x;
+	int					map_y;
+	int					exit_x;
+	int					exit_y;
+}						t_map;
 
 #endif

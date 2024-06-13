@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 13:07:13 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/12 17:50:29 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 14:51:54 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,17 @@ void	free_lists(t_map *infomap)
 	t_coins	*temp_coin;
 	t_tile	*temp_tile;
 
-	if (infomap->lst_coins == NULL)
-		return ;
 	while (infomap->lst_coins != NULL)
 	{
-		temp_coin = infomap->lst_coins->next;	
+		temp_coin = infomap->lst_coins->next;
 		if (infomap->lst_coins->coin != NULL)
 			mlx_delete_image(infomap->mlx, infomap->lst_coins->coin);
 		free(infomap->lst_coins);
 		infomap->lst_coins = temp_coin;
 	}
-	if (infomap->lst_tiles == NULL)
-		return ;
 	while (infomap->lst_tiles != NULL)
 	{
-		temp_tile = infomap->lst_tiles->next;	
+		temp_tile = infomap->lst_tiles->next;
 		if (infomap->lst_tiles->tile != NULL)
 			mlx_delete_image(infomap->mlx, infomap->lst_tiles->tile);
 		free(infomap->lst_tiles);
@@ -49,10 +45,7 @@ int	main(int argc, char **argv)
 	if (argv[1] == NULL || ft_strlen(argv[1]) < 5 || argc < 2)
 		return (0);
 	if (ft_strncmp(&argv[1][ft_strlen(argv[1]) - 4], ".ber", 4) != 0)
-	{
-		ft_printf("Map extension is not .ber.\n");
-		return (0);
-	}
+		return (ft_printf("Map extension is not .ber.\n"));
 	map_copy = map_init(argv[1]);
 	info_map.map = map_init(argv[1]);
 	if (map_copy == NULL || info_map.map == NULL)
@@ -63,9 +56,10 @@ int	main(int argc, char **argv)
 	{
 		free_tab(info_map.map);
 		free_tab(map_copy);
-		return (0);	
+		return (0);
 	}
 	open_window(info_map);
 	free_tab(map_copy);
 	free_tab(info_map.map);
+	return (0);
 }

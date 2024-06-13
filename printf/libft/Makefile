@@ -6,7 +6,7 @@
 #    By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 15:13:38 by lmaume            #+#    #+#              #
-#    Updated: 2024/06/10 14:17:10 by lmaume           ###   ########.fr        #
+#    Updated: 2024/06/13 15:33:36 by lmaume           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,11 +50,12 @@ SRCS =	ft_isalpha.c \
 		ft_file_to_tab.c \
 		ft_check_line.c \
 		ft_count_selected_char_in_tab.c \
-		ft_lstnew.c
+		ft_lstnew.c \
+		ft_lstdelone.c
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -g3
+CFLAGS = -Wall -Wextra -Werror -fsanitize=leak -g3
 
 RM = rm -f
 

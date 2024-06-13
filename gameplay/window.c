@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:40:20 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/12 17:52:42 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 14:47:40 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	file_to_image(t_map *infomap)
 int	open_window(t_map infomap)
 {
 	infomap.mlx = mlx_init((infomap.map_x - 1) * 64, \
-	infomap.map_y * 64, "so_long", false);
+					infomap.map_y * 64, "so_long", false);
 	if (file_to_image(&infomap) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	texture_to_list(&infomap, infomap.sprites.wall_texture, \
@@ -118,7 +118,15 @@ int	open_window(t_map infomap)
 	infomap.moves = 0;
 	mlx_loop_hook(infomap.mlx, &ft_hook, (void *)&infomap);
 	mlx_loop(infomap.mlx);
+	close_window(&infomap);
 	mlx_terminate(infomap.mlx);
-	free_lists(&infomap);
 	return (EXIT_SUCCESS);
+}
+
+void	close_window(t_map *infomap)
+{
+	mlx_delete_image(infomap->mlx, infomap->sprites.player);
+	mlx_delete_image(infomap->mlx, infomap->sprites.exit);
+	free_lists(infomap);
+	delete_all_textures(infomap);
 }

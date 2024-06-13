@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 16:42:40 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/12 17:50:21 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 13:14:00 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 //? DISPLAY
 void	get_map_size(t_map *infomap);
 int		open_window(t_map infomap);
+void	close_window(t_map *infomap);
 int		display_coins(t_map *infomap);
 void	put_sprite(t_map *infomap);
 void	delete_all_textures(t_map *infomap);

@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:19:17 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/12 17:53:53 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/13 13:40:07 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,10 +87,6 @@ bool	is_win(t_map *infomap, int x, int y)
 	{
 		printf("you won\n");
 		mlx_close_window(infomap->mlx);
-		mlx_delete_image(infomap->mlx, infomap->sprites.player);
-		mlx_delete_image(infomap->mlx, infomap->sprites.exit);
-		delete_all_textures(infomap);
-		free_lists(infomap);
 		return (true);
 	}
 	return (false);
