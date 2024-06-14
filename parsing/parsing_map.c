@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 14:16:08 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/12 16:50:45 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/14 15:40:23 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ bool	is_all_ok(int x, int y, char **map, t_map *infomap)
 		ft_printf("Map is not surrounded by walls.\n");
 		return (false);
 	}
-	if (ft_count_selected_char_in_tab(map, 'C') + 1 != pathfinding(x, y, map))
+	if (ft_count_selected_char_in_tab(map, 'C') + 1 != pathfinding(y, x, map))
 	{
 		ft_printf("Map is not playable.\n");
 		return (false);

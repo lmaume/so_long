@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:15:21 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/10 09:45:05 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/14 15:28:06 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char	**ft_file_to_tab(char *filename)
 	int		i;
 
 	i = 0;
-	tab = ft_calloc(sizeof(char *), count_file_size(filename) + 1);
+	tab = ft_calloc(sizeof(char *), count_file_size(filename) + 5);
 	if (tab == NULL)
 		return (NULL);
 	fd = open(filename, O_RDONLY);
