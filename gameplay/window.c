@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 18:40:20 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/13 17:08:15 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/17 10:52:21 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,13 @@ int	open_window(t_map infomap)
 	if (display_map(&infomap) == -1)
 	{
 		mlx_close_window(infomap.mlx);
-		return (EXIT_FAILURE);
+		return (close_window(&infomap), EXIT_FAILURE);
 	}
 	texture_to_coin(&infomap, infomap.sprites.coin_texture);
 	if (display_coins(&infomap) == -1)
 	{
 		mlx_close_window(infomap.mlx);
-		return (EXIT_FAILURE);
+		return (close_window(&infomap), EXIT_FAILURE);
 	}
 	put_sprite(&infomap);
 	infomap.moves = 0;

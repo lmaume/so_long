@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 18:26:00 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/12 16:43:46 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/17 11:01:25 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ t_tile	*ft_tilenew(void *content)
 	t_tile	*bloc;
 
 	bloc = ft_calloc(sizeof(t_tile), 1);
+	if (bloc == NULL)
+		return (NULL);
 	bloc->tile = content;
 	return (bloc);
 }
@@ -42,6 +44,8 @@ void	ft_tileadd_back(t_tile **lst, t_tile *new)
 {
 	t_tile	*bloc;
 
+	if (new == NULL)
+		return ;
 	bloc = *lst;
 	while (bloc->next != NULL)
 	{

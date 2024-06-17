@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 14:19:17 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/13 17:08:05 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/17 10:43:32 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ bool	is_win(t_map *infomap, int x, int y)
 	if ((x == infomap->exit_x && y == infomap->exit_y) && \
 		ft_count_selected_char_in_tab(infomap->map, 'C') == 0)
 	{
-		printf("you won\n");
+		ft_printf("you won\n");
 		mlx_close_window(infomap->mlx);
 		return (true);
 	}

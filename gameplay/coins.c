@@ -6,7 +6,7 @@
 /*   By: lmaume <lmaume@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/11 12:05:19 by lmaume            #+#    #+#             */
-/*   Updated: 2024/06/13 17:08:00 by lmaume           ###   ########.fr       */
+/*   Updated: 2024/06/17 10:57:07 by lmaume           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static t_coins	*ft_newcoin(void *content, int x, int y)
 	t_coins	*bloc;
 
 	bloc = ft_calloc(sizeof(t_coins), 1);
+	if (bloc == NULL)
+		return (NULL);
 	bloc->coin = content;
 	bloc->c_x = x;
 	bloc->c_y = y;
@@ -27,6 +29,8 @@ static void	ft_coinadd_back(t_coins **lst, t_coins *new)
 {
 	t_coins	*bloc;
 
+	if (new == NULL)
+		return ;
 	bloc = *lst;
 	while (bloc->next != NULL)
 		bloc = bloc->next;
@@ -71,7 +75,7 @@ void	texture_to_coin(t_map *infomap, mlx_texture_t *coin)
 	count = 0;
 	while (infomap->map[i] != NULL)
 	{
-		while (infomap->map[i][j] != '\0')
+		while (infomap->map[i][j] != '\0' && infomap->lst_coins)
 		{
 			if (infomap->map[i][j] == 'C' && count == 0)
 			{
